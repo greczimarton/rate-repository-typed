@@ -53,6 +53,7 @@ const validationSchema = yup.object().shape({
 });
 
 const SignInView = () => {
+    fetch("https://my-api.com/get-end-point");
     return (
         <Formik
             initialValues={formik.initialValues}
@@ -74,21 +75,6 @@ const SignInView = () => {
                         secureTextEntry
                         component={TextField}
                     />
-                    {/* <TextInput
-                        style={styles.input}
-                        placeholder="Username"
-                        onChangeText={handleChange("username")}
-                        onBlur={handleBlur("username")}
-                        value={values.username}
-                    />
-                    <TextInput
-                        secureTextEntry
-                        style={styles.input}
-                        placeholder="Password"
-                        onChangeText={handleChange("password")}
-                        onBlur={handleBlur("password")}
-                        value={values.password}
-                    /> */}
                     <Pressable
                         style={styles.signInButton}
                         onPress={handleSubmit}

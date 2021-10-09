@@ -1,6 +1,6 @@
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
-import { Link, Redirect } from "react-router-native";
+import { StyleSheet, Text } from "react-native";
+import { Link } from "react-router-native";
 import Theme from "../../Theme";
 
 const styles = StyleSheet.create({
