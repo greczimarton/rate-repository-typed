@@ -1,7 +1,7 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../../hooks/useRepositories";
+import RepositoryItem from "./RepositoryItem";
 
 const styles = StyleSheet.create({
     separator: {
@@ -15,13 +15,12 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-    const { repositories } = useRepositories();
+    /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
+    const { data } = useRepositories();
 
-    /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return */
-    const repositoryNodes = repositories
-        ? repositories.edges.map((edge: any) => edge.node)
+    const repositoryNodes = data
+        ? data.repositories.edges.map((edge: any) => edge.node)
         : [];
-    /* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return */
 
     return (
         <View style={styles.container}>
@@ -32,6 +31,7 @@ const RepositoryList = () => {
             />
         </View>
     );
+    /* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
 };
 
 export default RepositoryList;
