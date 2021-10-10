@@ -1,4 +1,11 @@
 {
-    "cSpell.words": ["formik", "jaredpalmer", "Pressable", "reduxjs", "Roboto"],
+    "cSpell.words": [
+        "formik",
+        "jaredpalmer",
+        "Pressable",
+        "reduxjs",
+        "Roboto",
+        "SIGNIN"
+    ],
     "cSpell.ignoreWords": ["codepaths", "tsbuildinfo"]
 }

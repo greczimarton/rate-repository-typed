@@ -1,20 +1,12 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Field, Formik, FormikValues } from "formik";
 import * as yup from "yup";
-import Theme from "../../Theme";
+import Theme from "../../utils/Theme";
 import TextField from "./TextField";
-
-const formik = {
-    initialValues: {
-        username: "",
-        password: "",
-    },
-    onSubmit: (values: FormikValues, { resetForm }: { resetForm: any }) => {
-        resetForm({});
-        console.log("values", values);
-    },
-};
+import useSignIn from "../../hooks/useSignIn";
+import { AuthorizeInput } from "../../utils/Types";
+import { useHistory } from "react-router-native";
 
 const styles = StyleSheet.create({
     input: {
@@ -53,14 +45,47 @@ const validationSchema = yup.object().shape({
 });
 
 const SignInView = () => {
-    fetch("https://my-api.com/get-end-point");
+    const signIn = useSignIn();
+    const history = useHistory();
+
+    const formik = {
+        initialValues: {
+            username: "",
+            password: "",
+        },
+        onSubmit: async (
+            values: FormikValues,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            { resetForm }: { resetForm: any }
+        ) => {
+            const { username, password } = values;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+            resetForm({});
+            const credentials: AuthorizeInput = {
+                username: String(username),
+                password: String(password),
+            };
+
+            try {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                const data = await signIn(credentials);
+                console.log(
+                    `${username}'s accessToken: ${data.authorize.accessToken}'`
+                );
+                history.push("/");
+            } catch (e) {
+                console.log(e);
+            }
+        },
+    };
+
     return (
         <Formik
             initialValues={formik.initialValues}
             onSubmit={formik.onSubmit}
             validationSchema={validationSchema}
         >
-            {({ handleSubmit, values }) => (
+            {({ handleSubmit }) => (
                 <View style={styles.container}>
                     <Field
                         label="Username"

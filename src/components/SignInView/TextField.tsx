@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import { ErrorMessage, Field, FieldProps, FormikProps, useField } from "formik";
-import Theme from "../../Theme";
+import { FieldProps, useField } from "formik";
+import Theme from "../../utils/Theme";
 
 export interface propTypes {
     name: string;
@@ -14,6 +14,7 @@ interface TextProps extends FieldProps {
 }
 
 const TextField = ({ field, placeholder, secureTextEntry }: TextProps) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_field, meta, helpers] = useField(field.name);
 
     const showError = meta.touched && meta.error;
@@ -44,6 +45,7 @@ const TextField = ({ field, placeholder, secureTextEntry }: TextProps) => {
             <TextInput
                 secureTextEntry={secureTextEntry}
                 style={styles.input}
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 value={field.value}
                 placeholder={placeholder}
                 onChangeText={(value) => helpers.setValue(value)}
@@ -53,15 +55,5 @@ const TextField = ({ field, placeholder, secureTextEntry }: TextProps) => {
         </View>
     );
 };
-// <>
-//     <TextInput
-//         onChangeText={(value) => helpers.setValue(value)}
-//         onBlur={() => helpers.setTouched(true)}
-//         value={field.value}
-//         error={showError}
-//         {...props}
-//     />
-//     {showError && <Text style={styles.errorText}>{meta.error}</Text>}
-// </>
 
 export default TextField;

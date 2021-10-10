@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { Link } from "react-router-native";
-import Theme from "../../Theme";
+import Theme from "../../utils/Theme";
 
 const styles = StyleSheet.create({
     text: {
@@ -13,14 +13,23 @@ const styles = StyleSheet.create({
 interface PropTypes {
     text: string;
     to: string;
+    onPress?: () => void;
 }
 
-const AppBarTab = ({ text, to }: PropTypes) => {
-    return (
-        <Link to={`/${to}`}>
-            <Text style={styles.text}>{text}</Text>
-        </Link>
-    );
+const AppBarTab = ({ text, to, onPress }: PropTypes) => {
+    if (onPress) {
+        return (
+            <Pressable onPress={onPress}>
+                <Text style={styles.text}>{text}</Text>
+            </Pressable>
+        );
+    } else {
+        return (
+            <Link to={`/${to}`}>
+                <Text style={styles.text}>{text}</Text>
+            </Link>
+        );
+    }
 };
 
 export default AppBarTab;

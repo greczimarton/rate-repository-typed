@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import LanguageTag from "./LanguageTag";
-import Theme from "../../../Theme";
+import Theme from "../../../utils/Theme";
 
 interface PropType {
     fullName: string;

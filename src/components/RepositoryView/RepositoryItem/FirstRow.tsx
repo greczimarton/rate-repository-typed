@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import DescriptionContainer from "./DescriptionContainer";
-import { Repository } from "../../../Types";
+import { Repository } from "../../../utils/Types";
 
 const styles = StyleSheet.create({
     FirstRow: {
