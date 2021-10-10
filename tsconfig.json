@@ -104,7 +104,8 @@
         "babel.config.js",
         "metro.config.js",
         "jest.config.js",
-        "webpack.config.js"
+        "webpack.config.js",
+        "app.config.js"
     ],
     "extends": "expo/tsconfig.base"
 }

@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
 });
-
 const FirstRow = ({ item }: { item: Repository }) => {
     return (
         <View style={styles.FirstRow}>

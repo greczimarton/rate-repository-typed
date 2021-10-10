@@ -8,7 +8,6 @@ const useRepositories = () => {
         fetchPolicy: "cache-and-network",
     });
 
-
     return { data, error, loading };
     /* eslint-enable @typescript-eslint/no-unsafe-assignment */
 };
